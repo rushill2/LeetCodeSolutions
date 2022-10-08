@@ -34,9 +34,15 @@ class Solution:
             nonlocal diam
             if not root:
                 return 0
+            # get depth of left and right subtrees
             ltree = maxDepth(root.left)
             rtree = maxDepth(root.right)
+            
+            # diam would be sum of max depth on left and max depth on right
             diam = max(diam, ltree+rtree)
+            
+            # return depth since we still need to calc that. Diam passed in by reference using nonlocal
             return 1 + max(ltree, rtree)
+        
         maxDepth(root)
         return diam
